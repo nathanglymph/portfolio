@@ -1,0 +1,206 @@
+/* Color Variables & Font Setup */
+:root {
+    --bg-wood: #1e1713;
+    --parchment-bg: #f4eee1;
+    --parchment-border: #d2c2a5;
+    --ink-dark: #2c221e;
+    --ink-muted: #5a4b41;
+    --copper-accent: #965d25;
+    --copper-hover: #b87333;
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    
+    --font-title: 'Courier New', Courier, monospace;
+    --font-body: 'Trebuchet MS', 'Lucida Sans Unicode', sans-serif;
+}
+
+body {
+    background-color: var(--bg-wood);
+    /* Subtle wooden texture simulated via SVG radial pattern */
+    background-image: radial-gradient(#2a201a 1px, transparent 1px), radial-gradient(#2a201a 1px, #1e1713 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    color: var(--ink-dark);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base Parchment Sheet Styling */
+.parchment-sheet {
+    background-color: var(--parchment-bg);
+    border: 1px solid var(--parchment-border);
+    border-radius: 3px;
+    box-shadow: 0 10px 25px var(--shadow-dark), inset 0 0 40px rgba(180, 160, 120, 0.2);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+.header-sheet {
+    max-width: 900px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.bio-container {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 2px;
+    border: 2px solid var(--copper-accent);
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: var(--ink-dark);
+}
+
+.subtitle {
+    font-family: var(--font-title);
+    font-size: 0.95rem;
+    color: var(--copper-accent);
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.bio-body {
+    line-height: 1.5;
+    font-size: 1rem;
+    color: var(--ink-dark);
+}
+
+.header-links a {
+    font-family: var(--font-title);
+    color: var(--copper-accent);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    font-size: 0.9rem;
+}
+
+.header-links a:hover {
+    color: var(--copper-hover);
+    text-decoration: underline;
+}
+
+/* Workbench Grid Section */
+.workbench {
+    max-width: 900px;
+    width: 100%;
+}
+
+.section-title {
+    color: #e2d7c5;
+    border-bottom: 1px dashed var(--copper-accent);
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    font-size: 1.3rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+/* Project Card Styling */
+.project-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px var(--shadow-dark), inset 0 0 50px rgba(180, 160, 120, 0.3);
+    border-color: var(--copper-accent);
+}
+
+.catalog-num {
+    font-family: var(--font-title);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 15px 0;
+}
+
+.tag {
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    background: rgba(150, 93, 37, 0.12);
+    color: var(--copper-accent);
+    padding: 3px 8px;
+    border-radius: 2px;
+    border: 1px solid rgba(150, 93, 37, 0.3);
+}
+
+.project-summary {
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.vv-preview {
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.04);
+    padding: 8px 12px;
+    border-left: 3px solid var(--copper-accent);
+    margin-bottom: 15px;
+    color: var(--ink-muted);
+}
+
+.card-footer {
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--copper-accent);
+    text-align: right;
+}
+
+.draft-card {
+    opacity: 0.7;
+    cursor: default;
+}
+.draft-card:hover {
+    transform: none;
+    border-color: var(--parchment-border);
+}
+.draft-label {
+    color: var(--ink-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+    .bio-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

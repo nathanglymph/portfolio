@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header / Bio Section -->
+    <header class="parchment-sheet header-sheet">
+        <div class="bio-container">
+            <img src="assets/images/profile.jpg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/130?text=Photo';">
+            <div class="bio-text">
+                <h1>ENGINEERING PORTFOLIO</h1>
+                <p class="subtitle">Biomedical, Hardware & Embedded Systems Engineer</p>
+                <p class="bio-body">
+                    Welcome to my workbench. I focus on bridging physical mechanics, electrical PCB layout, and signal processing to build low-level hardware solutions and medical devices.
+                </p>
+                <div class="header-links">
+                    <a href="https://github.com" target="_blank">[ GitHub ]</a>
+                    <a href="https://linkedin.com" target="_blank">[ LinkedIn ]</a>
+                    <a href="assets/resume.pdf" target="_blank">[ Resume PDF ]</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Project Grid Section -->
+    <main class="workbench">
+        <h2 class="section-title">PROJECT ARCHIVE</h2>
+
+        <div class="projects-grid">
+            
+            <!-- Senior Design Project Card -->
+            <article class="parchment-sheet project-card" onclick="window.location.href='projects/thermal-catheter.html'">
+                <div class="card-header">
+                    <span class="catalog-num">REF NO: BME-001</span>
+                    <h3>Thermal Ablation Catheter</h3>
+                    <div class="tag-row">
+                        <span class="tag">ELECTRICAL DESIGN</span>
+                        <span class="tag">MECHANICAL DESIGN</span>
+                        <span class="tag">ISO 13485 / 14971</span>
+                    </div>
+                </div>
+
+                <p class="project-summary">
+                    Reengineered the body and heating element of a thermal ablation catheter for extreme flexibility in tortuous varicose veins. Features a hybrid durometer jacket, spiral-cut polyimide thermal shielding, nitinol braid, and custom ergonomic handle.
+                </p>
+
+                <div class="vv-preview">
+                    <strong>V&V Highlights:</strong> Flexural test passed ($\le$2cm curvature radius); heat test achieved 160°F @ 36V.
+                </div>
+
+                <div class="card-footer">
+                    <span class="action-link">Open Blueprint / Documentation &rarr;</span>
+                </div>
+            </article>
+
+            <!-- Placeholder Card for next roll-outs -->
+            <article class="parchment-sheet project-card draft-card">
+                <div class="card-header">
+                    <span class="catalog-num">REF NO: ECE-002</span>
+                    <h3>Climbing Fall Measurement Device</h3>
+                    <div class="tag-row">
+                        <span class="tag">EMBEDDED SYSTEMS</span>
+                        <span class="tag">PCB DESIGN</span>
+                    </div>
+                </div>
+                <p class="project-summary">
+                    Custom 2-layer PCB utilizing an STM32L4 microcontroller, 6-axis IMU, EEPROM logging, and OLED display for high-g acceleration event tracking.
+                </p>
+                <div class="card-footer">
+                    <span class="action-link draft-label">[ In Development ]</span>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+</body>
+</html>
