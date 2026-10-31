@@ -9,34 +9,64 @@
 <body>
 
     <!-- Header / Bio Section -->
-    <header class="parchment-sheet header-sheet">
-        <div class="bio-container">
-            <img src="assets/images/profile.jpg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/130?text=Photo';">
+     <header class="parchment-sheet header-sheet">
+        <!-- Top Row: Profile Picture & Main Bio -->
+        <div class="bio-top-section">
+            <img src="assets/images/profile_pic.jpeg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/130?text=Photo';">
             <div class="bio-text">
-                <h1>ENGINEERING PORTFOLIO</h1>
+                <h1>Nathan Glymph</h1>
                 <p class="subtitle">Biomedical, Hardware & Embedded Systems Engineer</p>
                 <p class="bio-body">
-                    Welcome to my workbench. I focus on bridging physical mechanics, electrical PCB layout, and signal processing to build low-level hardware solutions and medical devices.
+                    Welcome to my portfolio. I focus on electromechanical product development from ideation to realization, leveraging my background in medical device development through regulatory controls and quality management systems. My core skills including MCAD, embedded software, circuit & pcb design, control systems, and signal processing. 
                 </p>
-                <div class="header-links">
-                    <a href="https://github.com" target="_blank">[ GitHub ]</a>
-                    <a href="https://linkedin.com" target="_blank">[ LinkedIn ]</a>
-                    <a href="assets/resume.pdf" target="_blank">[ Resume PDF ]</a>
+            </div>
+        </div>
+
+        <!-- Dashed Divider Line -->
+        <div class="header-divider"></div>
+
+        <!-- Bottom Section: Education & Links Full Width -->
+        <div class="bio-bottom-section">
+            <div class="education-block">
+                <div class="edu-item">
+                    <div class="edu-text">
+                        <strong>M.S., Electrical Engineering (expected 2027)</strong><br>
+                        <span>North Carolina State University</span>
+                    </div>
+                    <div class="logo-slot-horizontal">
+                        <img src="assets/images/ncstate-logo.png" alt="NC State University" class="edu-logo">
+                    </div>
                 </div>
+
+                <div class="edu-item">
+                    <div class="edu-text">
+                        <strong>B.S., Biomedical Engineering (2026)</strong><br>
+                        <span>North Carolina State University and UNC Chapel Hill</span>
+                    </div>
+                    <div class="logo-slot-horizontal">
+                        <img src="assets/images/unc-logo.png" alt="NC State & UNC Chapel Hill" class="edu-logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-links">
+                <a href="https://github.com/nathanglymph" target="_blank">[ GitHub ]</a>
+                <a href="https://www.linkedin.com/in/nathan-glymph/" target="_blank">[ LinkedIn ]</a>
+                <a href="assets/Resume.pdf" target="_blank">[ Resume PDF ]</a>
             </div>
         </div>
     </header>
 
     <!-- Main Project Grid Section -->
     <main class="workbench">
-        <h2 class="section-title">PROJECT ARCHIVE</h2>
+        <h2 class="section-title">PROJECTS</h2>
 
         <div class="projects-grid">
             
             <!-- Senior Design Project Card -->
             <article class="parchment-sheet project-card" onclick="window.location.href='projects/thermal-catheter.html'">
                 <div class="card-header">
-                    <span class="catalog-num">REF NO: BME-001</span>
+                    <span class="catalog-num">REF-001</span>
                     <h3>Thermal Ablation Catheter</h3>
                     <div class="tag-row">
                         <span class="tag">ELECTRICAL DESIGN</span>
@@ -61,7 +91,7 @@
             <!-- Placeholder Card for next roll-outs -->
             <article class="parchment-sheet project-card draft-card">
                 <div class="card-header">
-                    <span class="catalog-num">REF NO: ECE-002</span>
+                    <span class="catalog-num">REF-002</span>
                     <h3>Climbing Fall Measurement Device</h3>
                     <div class="tag-row">
                         <span class="tag">EMBEDDED SYSTEMS</span>

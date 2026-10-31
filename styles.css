@@ -1,6 +1,6 @@
 /* Color Variables & Font Setup */
 :root {
-    --bg-wood: #1e1713;
+    --bg-wood: #30251f;
     --parchment-bg: #f4eee1;
     --parchment-border: #d2c2a5;
     --ink-dark: #2c221e;
@@ -38,26 +38,43 @@ body {
     box-sizing: border-box;
 }
 
-/* Header Section */
+/* Header Section Layout */
 .header-sheet {
     max-width: 900px;
     width: 100%;
     margin-bottom: 40px;
 }
 
-.bio-container {
+.bio-top-section {
     display: flex;
     gap: 25px;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.bio-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .profile-img {
     width: 130px;
     height: 130px;
+    min-width: 130px;
     border-radius: 2px;
     border: 2px solid var(--copper-accent);
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Dashed divider between top bio and education */
+.header-divider {
+    border-top: 1px dashed var(--parchment-border);
+    margin: 20px 0;
+    width: 100%;
 }
 
 h1, h2, h3 {
@@ -97,6 +114,68 @@ h1 {
 .header-links a:hover {
     color: var(--copper-hover);
     text-decoration: underline;
+}
+
+/* Bottom Section (Full Left Alignment) */
+.bio-bottom-section {
+    width: 100%;
+}
+
+.education-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.edu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.edu-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--ink-dark);
+    flex: 1;
+    min-width: 0;
+}
+
+.edu-text strong {
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    color: var(--ink-dark);
+}
+
+.edu-text span {
+    color: var(--copper-accent);
+    font-weight: 600;
+}
+
+/* Horizontal Logo Slot (Borderless & Background-free) */
+.logo-slot-horizontal {
+    width: 140px;
+    height: 45px;
+    min-width: 140px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.logo-slot-horizontal img.edu-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
 /* Workbench Grid Section */
@@ -196,11 +275,19 @@ h1 {
 
 /* Responsive adjustments */
 @media (max-width: 650px) {
-    .bio-container {
+    .bio-top-section {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+    .edu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .logo-slot-horizontal {
+        justify-content: flex-start;
     }
 }
