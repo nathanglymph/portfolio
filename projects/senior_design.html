@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Ablation Catheter | Senior Design Project</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* Page-specific styling for Thermal Ablation Catheter blueprint */
+        .detail-header {
+            border-bottom: 1px dashed var(--parchment-border);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .detail-section {
+            margin-bottom: 30px;
+        }
+
+        .detail-section h2 {
+            font-size: 1.25rem;
+            color: var(--copper-accent);
+            border-bottom: 1px solid var(--parchment-border);
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* V&V Section Layout (2x2 Grid + Image Side-by-Side) */
+        .vv-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .spec-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .spec-box {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--parchment-border);
+            padding: 12px 15px;
+            border-radius: 2px;
+        }
+
+        .spec-box strong {
+            font-family: var(--font-title);
+            color: var(--ink-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .vv-image-wrapper {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed var(--copper-accent);
+            padding: 8px;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .vv-image-wrapper img {
+            width: 100%;
+            height: 260px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed var(--copper-accent);
+            padding: 8px;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+        }
+
+        .gallery-caption {
+            font-family: var(--font-title);
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+            margin-top: 6px;
+        }
+
+        .status-pass {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        .status-fail {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        /* Evolution Comparison Layout */
+        .evolution-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .comparison-item {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed var(--copper-accent);
+            padding: 10px;
+            border-radius: 2px;
+            text-align: center;
+        }
+        .comparison-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+        }
+        .comparison-arrow {
+            font-size: 2rem;
+            color: var(--copper-accent);
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        /* Hardware Architecture Component Cards */
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .hardware-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--parchment-border);
+            padding: 12px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hardware-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+            margin-bottom: 10px;
+        }
+        .hardware-card h4 {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            color: var(--copper-accent);
+            margin: 0 0 6px 0;
+        }
+        .hardware-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin: 0;
+            color: var(--ink-dark);
+        }
+
+        /* Span card across 2 columns in the grid */
+        .hardware-card.wide-card {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .hardware-card.wide-card {
+                grid-column: span 1; /* Stack to 1 column on mobile screens */
+            }
+        }
+
+        @media (max-width: 850px) {
+            .vv-container {
+                grid-template-columns: 1fr;
+            }
+            .comparison-arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+            }
+        }
+
+        /* Continuity Data Table Styling */
+        .continuity-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 0.82rem;
+        }
+        .continuity-table th {
+            font-family: var(--font-title);
+            color: var(--copper-accent);
+            font-size: 0.75rem;
+            text-align: left;
+            padding: 4px 6px;
+            border-bottom: 1px solid var(--copper-accent);
+        }
+        .continuity-table td {
+            padding: 5px 6px;
+            border-bottom: 1px dashed var(--parchment-border);
+            color: var(--ink-dark);
+        }
+        .continuity-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Make Continuity card span both columns of the sub-grid */
+        .spec-box.continuity-box {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book-layout">
+        
+        <!-- Sidebar dynamically injected here from assets/js/sidebar.js -->
+        <div id="sidebar-container"></div>
+
+        <!-- Main Document Sheet Container -->
+        <main class="project-detail-container">
+            <article class="parchment-sheet">
+                <header class="detail-header">
+                    <span class="catalog-num">REF-001</span>
+                    <h1>Thermal Ablation Catheter | Senior Design Project</h1>
+                    <div class="tag-row">
+                        <span class="tag">ELECTRICAL DESIGN</span>
+                        <span class="tag">MECHANICAL DESIGN</span>
+                        <span class="tag">ISO 13485 / 14971</span>
+                        <span class="tag">IEC 60601-1</span>
+                        <span class="tag">510(k) PATHWAY</span>
+                    </div>
+                </header>
+
+                <!-- Overview & Clinical Goal -->
+                <section class="detail-section">
+                    <h2>1. Background & Clinical Intent</h2>
+                    <p>
+                        <strong>Clinical Problem:</strong> Tortuous varicose veins are commonly treated via sclerotherapy, an uncomfortable foam injection suffering from high rates of partial or incomplete vein closure which can lead to deep vein thrombosis.
+                    </p>
+                    <p>
+                        <strong>Engineering Goal:</strong> Reengineer the body and heating element of a thermal ablation catheter for flexibility, allowing this more effective treatment method to be used on extremely tortuous veins and improve patient outcomes.
+                    </p>
+
+                    <!-- Design Evolution Visual Comparison -->
+                    <div class="evolution-comparison">
+                        <div class="comparison-item">
+                            <img src="../assets/images/senior_design/old_tip.png" alt="Predicate Device" onerror="this.src='https://via.placeholder.com/300x150?text=old_tip.png';">
+                            <div class="gallery-caption">Predicate Device</div>
+                        </div>
+                        <div class="comparison-arrow">&rarr;</div>
+                        <div class="comparison-item">
+                            <img src="../assets/images/senior_design/side_view.png" alt="Novel Design for Flexibility" onerror="this.src='https://via.placeholder.com/300x150?text=side_view.png';">
+                            <div class="gallery-caption">Novel Design for Flexibility</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quality & Regulatory Controls -->
+                <section class="detail-section">
+                    <h2>2. Design Controls & Regulatory Framework</h2>
+                    <ul>
+                        <li><strong>QMS & Risk Planning:</strong> Quality documentation and planning executed under ISO 9001, ISO 14971, and ISO 13485 standards.</li>
+                        <li><strong>Risk Management:</strong> Performed comprehensive user and design FMEA analyses.</li>
+                        <li><strong>Standards Integration:</strong> Researched and integrated other ISO, IEC, & IPC consensus standards for biocompatibility, catheter design, packaging, and electrical safety.</li>
+                        <li><strong>Regulatory Pathway:</strong> Structured documentation around a 510(k) premarket notification pathway.</li>
+                    </ul>
+                </section>
+
+                <!-- Mechanical & Electrical Architecture -->
+                <section class="detail-section">
+                    <h2>3. Hardware & Mechanical Architecture</h2>
+                    <p style="margin-bottom: 15px;">
+                        <strong>Requirements Flow:</strong> User needs &rarr; product requirements &rarr; detailed design inputs.
+                    </p>
+
+                    <!-- Hardware Grid with Images & Descriptions -->
+                    <div class="hardware-grid">
+                        
+                        <!-- Braid -->
+                        <div class="hardware-card">
+                            <div>
+                                <img src="../assets/images/senior_design/braid.png" alt="Nitinol Braid" onerror="this.src='https://via.placeholder.com/300x150?text=braid.png';">
+                                <h4>Structural Elements</h4>
+                                <p>Nitinol braid to provide mechanical structure and protect internal wiring.</p>
+                            </div>
+                        </div>
+
+                        <!-- Jacket -->
+                        <div class="hardware-card">
+                            <div>
+                                <img src="../assets/images/senior_design/jacket.png" alt="Hybrid Jacket" onerror="this.src='https://via.placeholder.com/300x150?text=jacket.png';">
+                                <h4>Jacket Design</h4>
+                                <p>Hybrid durometer jacket engineered to balance flexibility and structure for steerability.</p>
+                            </div>
+                        </div>
+
+                        <!-- Windings -->
+                        <div class="hardware-card">
+                            <div>
+                                <img src="../assets/images/senior_design/windings.png" alt="Thermal Management & Windings" onerror="this.src='https://via.placeholder.com/300x150?text=windings.png';">
+                                <h4>Thermal Management & Heating</h4>
+                                <p>Spiral-cut polyimide tubing implemented for thermal protection, paired with variable pitch nitinol heating element windings.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tip -->
+                        <div class="hardware-card">
+                            <div>
+                                <img src="../assets/images/senior_design/tip.png" alt="Tip & Sterilization" onerror="this.src='https://via.placeholder.com/300x150?text=tip.png';">
+                                <h4>Finishing & Sterilization</h4>
+                                <p>PET heat shrink and cyanoacrylate tip applied to reduce friction, protect electronics, and enable ethylene oxide sterilization.</p>
+                            </div>
+                        </div>
+
+                        <!-- Handle -->
+                        <div class="hardware-card wide-card">
+                            <div>
+                                <img src="../assets/images/senior_design/drawing.jpg" alt="Ergonomic Handle" onerror="this.src='https://via.placeholder.com/300x150?text=handle.png';">
+                                <h4>Ergonomic Handle</h4>
+                                <p>Injection-molded handle housing internal support for custom PCB and wiring, a catheter port, power cable, luer-lock compatible guidewire access, and control switch.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Prototype & Fabrication Gallery -->
+                <section class="detail-section">
+                    <h2>4. Fabrication & Prototype Assembly</h2>
+                    <p>Hand-assembled proof of concept fabricated using a catheter reflow oven, evaluated against predicate hardware using custom 3D-printed testing blocks.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-item">
+                            <img src="../assets/images/senior_design/prototype.jpg" alt="Reflow Assembly" onerror="this.src='https://via.placeholder.com/300x160?text=Reflow+Assembly';">
+                            <div class="gallery-caption">Prototype Catheter</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="../assets/images/senior_design/handle.png" alt="Handle CAD" onerror="this.src='https://via.placeholder.com/300x160?text=Handle+CAD';">
+                            <div class="gallery-caption">Handle CAD</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="../assets/images/senior_design/testing_block.png" alt="Testing Fixture" onerror="this.src='https://via.placeholder.com/300x160?text=3D+Test+Block';">
+                            <div class="gallery-caption">3D-Printed Curvature Block</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Verification & Validation Results -->
+                <section class="detail-section">
+                    <h2>5. Verification & Validation (V&V) Matrix</h2>
+                    
+                    <div class="vv-container">
+                        <!-- Left: Restructured Grid with Continuity Table spanning wide -->
+                        <div class="spec-grid-2x2">
+                            <div class="spec-box">
+                                <strong>Flexural Test</strong>
+                                Result: <span class="status-pass">PASS</span><br>
+                                &le; 2 cm radius of curvature achieved.
+                            </div>
+                            <div class="spec-box">
+                                <strong>Heat Profile Test</strong>
+                                Result: <span class="status-pass">PASS</span><br>
+                                Achieved 160&deg;F @ 36V, 0.199A.
+                            </div>
+                            
+                            <!-- Continuity Test with Embedded Data Table spanning 2 columns -->
+                            <div class="spec-box continuity-box">
+                                <strong>Continuity Test</strong>
+                                Result: <span class="status-pass">PASS</span>
+                                <table class="continuity-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Direction</th>
+                                            <th>Test Value</th>
+                                            <th>P-Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Copper to Nichrome</td>
+                                            <td>11.12 &Omega;</td>
+                                            <td>0.9672</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nichrome to Copper</td>
+                                            <td>3.80 &Omega;</td>
+                                            <td>0.0709</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="spec-box" style="grid-column: span 2;">
+                                <strong>Leak Test</strong>
+                                Result: <span class="status-fail">FAIL (User Error)</span><br>
+                                Small puncture from manual construction.
+                            </div>
+                        </div>
+
+                        <!-- Right: Curvature Test Image -->
+                        <div class="vv-image-wrapper">
+                            <img src="../assets/images/senior_design/curvature_test.jpg" alt="Curvature Test" onerror="this.src='https://via.placeholder.com/300x260?text=curvature_test.jpg';">
+                            <div class="gallery-caption">Curvature Test</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Iterations -->
+                <section class="detail-section">
+                    <h2>6. Next Steps & Development Roadmap</h2>
+                    <ul>
+                        <li>Continued benchtop testing for fatigue and heating profiles.</li>
+                        <li>Improve connection robustness between internal copper wiring and nitinol heating element.</li>
+                        <li>Develop closed-loop feedback control driven by thermocouple readings.</li>
+                        <li>Transition to automated manufacturing for improved precision.</li>
+                    </ul>
+                </section>
+
+                <!-- Bottom Exit Navigation -->
+                <div style="margin-top: 40px; border-top: 1px dashed var(--parchment-border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                    <a href="../index.html" class="btn-back" style="font-family: var(--font-title); color: var(--copper-accent); text-decoration: none; font-weight: bold; border: 1px dashed var(--copper-accent); padding: 8px 14px; border-radius: 2px; background: rgba(150, 93, 37, 0.05);">&larr; Return Home - View Other Projects</a>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <!-- Centralized Sidebar Injection Script -->
+    <script src="../assets/js/sidebar.js"></script>
+</body>
+</html>
