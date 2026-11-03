@@ -372,6 +372,38 @@ h1 {
     margin: 5px 0;
 }
 
+.sidebar-project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-sub-link {
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    color: #d2c2a5;
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.15);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.sidebar-sub-link:hover {
+    background: rgba(150, 93, 37, 0.3);
+    color: #ffffff;
+    border-color: var(--copper-accent);
+}
+
+.sidebar-sub-link.active {
+    background: var(--copper-accent);
+    color: var(--parchment-bg);
+    font-weight: bold;
+    border-color: var(--copper-accent);
+}
+
 @media (max-width: 850px) {
     .book-layout {
         flex-direction: column;
