@@ -165,7 +165,7 @@
                         <strong>Clinical Motivation:</strong> Epileptic seizures are characterized by sudden bursts of abnormal synchronous neural activity, producing distinct shifts in spectral power across clinical EEG frequency bands (Delta, Theta, Alpha, Beta, and Gamma). Time-frequency spectrograms allow clinicians to track these spectral transitions to confirm epilepsy, localize the seizure onset zone, and classify seizure events.  
                     </p>
                     <p>
-                        <strong>Dataset &amp; Methodology:</strong> Analyzed 23-channel pediatric scalp EEG recordings from the PhysioNet CHB-MIT Scalp EEG Database sampled at 256 Hz. Evaluation focused on a 1 hour recording featuring an annotated 40-second ictal event. Signals were conditioned through a cascaded IIR Butterworth filter pipeline to remove electrical and high-frequency noise, and short-time Fourier transform spectrograms were generated to analyze frequency band power shifts during the seizure event.
+                        <strong>Dataset &amp; Methodology:</strong> Analyzed 23-channel pediatric scalp EEG recordings from the PhysioNet CHB-MIT Scalp EEG Database sampled at 256 Hz. Evaluation focused on a 1 hour recording featuring an annotated 40-second ictal event. Signals were conditioned through a cascaded IIR Butterworth filter pipeline to remove electrical and high-frequency noise, and spectrograms were generated to analyze frequency band power shifts during the seizure event.
                     </p>
 
                     <div class="figure-box">
@@ -182,8 +182,8 @@
                     </p>
                     <ul>
                         <li><strong>Ictal Spectral Signature:</strong> During seizure onset, power spectral density (PSD) increased markedly in the Delta (&lt;4 Hz), Theta (4–8 Hz), and Gamma (30–50 Hz) bands.</li>
-                        <li><strong>Instrument Artifact Identification:</strong> Spectral analysis revealed a sharp, narrowband 16 Hz interference spike alongside harmonics at 32 Hz and 48 Hz—characteristic of concurrent Electrical Impedance Tomography monitoring.</li>
-                        <li><strong>Bandwidth Selection:</strong> A 50 Hz upper cutoff was selected to preserve epileptic Gamma activity (30–50 Hz) while rejecting high-frequency noise.</li>
+                        <li><strong>Instrument Artifact Identification:</strong> Spectral analysis revealed a 16 Hz interference spike alongside harmonics at 32 Hz and 48 Hz—characteristic of concurrent Electrical Impedance Tomography monitoring.</li>
+                        <li><strong>Bandwidth Selection:</strong> A 50 Hz upper cutoff was selected to reject high-frequency noise while preserving epileptic Gamma activity (30–50 Hz).</li>
                     </ul>
 
                     <div class="figure-box">
@@ -223,7 +223,7 @@
                     </div>
 
                     <div class="figure-box">
-                        <img src="../assets/images/eeg_spectrogram/filterPS.png" alt="Channel 1 Unfiltered vs Filtered Power Spectrum" onerror="this.src='https://via.placeholder.com/750x380?text=filterPS.png';">
+                        <img src="../assets/images/eeg_spectrogram/filter_ps.png" alt="Channel 1 Unfiltered vs Filtered Power Spectrum" onerror="this.src='https://via.placeholder.com/750x380?text=filter_ps.png';">
                         <div class="figure-caption">Figure 4: Channel 1 PSD before and after cascaded filtering, confirming suppression of the 16/32/48 Hz artifacts and &gt;50 Hz noise floor.</div>
                     </div>
                 </section>
