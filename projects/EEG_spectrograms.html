@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electroencephalogram (EEG) Spectrograms for Siezure Analysis</title>
+    <title>EEG Spectrograms for Seizure Analysis | Signal Processing</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
+        /* Page-specific styling matching Senior Design blueprint */
         .detail-header {
             border-bottom: 1px dashed var(--parchment-border);
             padding-bottom: 15px;
             margin-bottom: 25px;
         }
+
         .detail-section {
             margin-bottom: 30px;
         }
+
         .detail-section h2 {
             font-size: 1.25rem;
             color: var(--copper-accent);
@@ -21,11 +24,117 @@
             padding-bottom: 6px;
             margin-bottom: 12px;
         }
-        .wip-notice {
+
+        .figure-box {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px dashed var(--copper-accent);
+            padding: 12px;
+            border-radius: 2px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .figure-box img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+        }
+
+        .figure-box.tall img {
+            max-height: 600px;
+        }
+
+        .figure-caption {
             font-family: var(--font-title);
+            font-size: 0.78rem;
             color: var(--ink-muted);
-            font-style: italic;
-            padding: 20px 0;
+            margin-top: 8px;
+        }
+
+        /* Side-by-side 2-column grid for filter responses & comparisons */
+        .plot-grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .plot-card {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--parchment-border);
+            padding: 12px;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .plot-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            border: 1px solid var(--parchment-border);
+            margin-bottom: 10px;
+        }
+
+        .plot-card h4 {
+            font-family: var(--font-title);
+            font-size: 0.9rem;
+            color: var(--copper-accent);
+            margin: 0 0 6px 0;
+        }
+
+        .plot-card p {
+            font-size: 0.88rem;
+            line-height: 1.4;
+            margin: 0;
+            color: var(--ink-dark);
+        }
+
+        /* Key Findings / Band Shift Summary Boxes */
+        .band-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .spec-box {
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--parchment-border);
+            padding: 12px 15px;
+            border-radius: 2px;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        .spec-box strong {
+            font-family: var(--font-title);
+            color: var(--ink-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .status-increase {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .status-decrease {
+            color: #c62828;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .plot-grid-2col,
+            .band-grid-2x2 {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -41,17 +150,146 @@
             <article class="parchment-sheet">
                 <header class="detail-header">
                     <span class="catalog-num">REF-004</span>
-                    <h1>Electroencephalogram (EEG) Spectrograms for Siezure Analysis</h1>
+                    <h1>Electroencephalogram (EEG) Spectrograms for Seizure Analysis</h1>
                     <div class="tag-row">
                         <span class="tag">STATISTICAL ANALYSIS</span>
                         <span class="tag">SIGNAL PROCESSING</span>
+                        <span class="tag">MATLAB / SIMULINK</span>
                     </div>
                 </header>
 
-                <!-- Project Body / WIP Content -->
+                <!-- 1. Clinical Background & Dataset -->
                 <section class="detail-section">
-                    <h2>1. Overview & Objectives</h2>
-                    <p class="wip-notice">[ Work In Progress - Full project documentation coming soon. ]</p>
+                    <h2>1. Clinical Background &amp; Dataset</h2>
+                    <p>
+                        <strong>Clinical Motivation:</strong> Epileptic seizures are characterized by sudden bursts of abnormal synchronous neural activity, producing distinct shifts in spectral power across clinical EEG frequency bands (Delta, Theta, Alpha, Beta, and Gamma). Time-frequency spectrograms allow clinicians to track these spectral transitions over time to confirm epilepsy, localize the seizure onset zone, and classify focal versus generalized events.
+                    </p>
+                    <p>
+                        <strong>Dataset &amp; Acquisition:</strong> Analyzed 23-channel pediatric scalp EEG recordings from the PhysioNet CHB-MIT Scalp EEG Database sampled at 256 Hz (Nyquist frequency = 128 Hz). Evaluation focused on Subject 1 (Recording 3, 1-hour duration), featuring an annotated 40-second ictal event occurring from 2996 s to 3036 s (49.93–50.60 min).
+                    </p>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/eeg_spectrogram/EEG_signals.png" alt="23-Channel Subject 1 EEG Time-Domain Recording" onerror="this.src='https://via.placeholder.com/750x380?text=EEG_signals.png';">
+                        <div class="figure-caption">Figure 1: Multi-channel (Channels 1–23) time-domain EEG recording highlighting the 40-second seizure spike between 2996 s and 3036 s.</div>
+                    </div>
+                </section>
+
+                <!-- 2. Spectral Analysis & Noise Identification -->
+                <section class="detail-section">
+                    <h2>2. Spectral Analysis &amp; Artifact Identification</h2>
+                    <p>
+                        To establish filter specifications prior to time-frequency analysis, four spatially distributed channels (Channels 1, 4, 16, and 18) were isolated across three 60-second Hanning windows—two capturing baseline brain activity and one encompassing the seizure event.
+                    </p>
+                    <ul>
+                        <li><strong>Ictal Spectral Signature:</strong> During seizure onset, power spectral density (PSD) increased markedly in the Delta (&lt;4 Hz), Theta (4–8 Hz), and Gamma (30–50 Hz) bands.</li>
+                        <li><strong>Instrument Artifact Identification:</strong> Spectral analysis revealed a sharp, narrowband 16 Hz interference spike alongside harmonics at 32 Hz and 48 Hz—characteristic of concurrent Electrical Impedance Tomography (EIT) monitoring.</li>
+                        <li><strong>Bandwidth Selection:</strong> A 50 Hz upper cutoff was selected to preserve epileptic Gamma activity (30–50 Hz) while rejecting high-frequency noise (high-frequency fast ripples at 200–600 Hz already lie above the 128 Hz Nyquist limit).</li>
+                    </ul>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/eeg_spectrogram/powerspectra.png" alt="Windowed Power Spectra Comparison" onerror="this.src='https://via.placeholder.com/750x400?text=powerspectra.png';">
+                        <div class="figure-caption">Figure 2: Windowed power spectra comparing normal baseline activity (left) against ictal seizure windows (right) across Channels 1, 4, 16, and 18.</div>
+                    </div>
+                </section>
+
+                <!-- 3. Cascaded IIR Filter Architecture -->
+                <section class="detail-section">
+                    <h2>3. Cascaded Biquad IIR Filter Architecture</h2>
+                    <p>
+                        A cascaded digital filtering pipeline was implemented in Simulink using biquad IIR Butterworth sections. IIR filters were selected for their sharp roll-off characteristics, as nonlinear phase distortion does not impact magnitude-based spectrogram power analysis.
+                    </p>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/eeg_spectrogram/simulink_diagram.png" alt="Simulink Cascaded Biquad Filter Pipeline" onerror="this.src='https://via.placeholder.com/750x180?text=simulink_diagram.png';">
+                        <div class="figure-caption">Simulink Signal Conditioning Pipeline: Cascaded 10th-order low-pass biquad followed by three 4th-order narrowband notch stages (16 Hz, 32 Hz, and 48 Hz).</div>
+                    </div>
+
+                    <div class="plot-grid-2col">
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/eeg_spectrogram/lpf_response.png" alt="10th Order IIR Butterworth Low-Pass Response" onerror="this.src='https://via.placeholder.com/360x220?text=lpf_response.png';">
+                                <h4>10th-Order Butterworth LPF (fc = 50 Hz)</h4>
+                                <p>Provides steep attenuation above 50 Hz to eliminate out-of-band noise while preserving the full Delta through Gamma clinical spectrum.</p>
+                            </div>
+                        </div>
+
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/eeg_spectrogram/bstop_response.png" alt="4th Order IIR Butterworth Bandstop Response" onerror="this.src='https://via.placeholder.com/360x220?text=bstop_response.png';">
+                                <h4>4th-Order Notch Filters (16, 32, 48 Hz)</h4>
+                                <p>Ultra-narrow &plusmn;0.1 Hz stopbands (e.g., 15.9–16.1 Hz) suppress EIT carrier spikes and harmonics without distorting adjacent neural bands.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/eeg_spectrogram/filterPS.png" alt="Channel 1 Unfiltered vs Filtered Power Spectrum" onerror="this.src='https://via.placeholder.com/750x380?text=filterPS.png';">
+                        <div class="figure-caption">Figure 4: Channel 1 PSD before (top) and after (bottom) cascaded filtering, confirming suppression of the 16/32/48 Hz artifacts and &gt;50 Hz noise floor.</div>
+                    </div>
+                </section>
+
+                <!-- 4. Single-Channel Time-Frequency Spectrogram Analysis -->
+                <section class="detail-section">
+                    <h2>4. Single-Channel Time-Frequency Spectrogram Analysis</h2>
+                    <p>
+                        Short-Time Fourier Transform (STFT) spectrograms were generated using a <strong>10-second sliding window with 9-second overlap</strong> (1-second temporal step) to balance frequency resolution against temporal localization of seizure transitions.
+                    </p>
+
+                    <div class="band-grid-2x2">
+                        <div class="spec-box">
+                            <strong>Alpha Band (8–13 Hz)</strong>
+                            <span class="status-decrease">POWER DROP AT ONSET</span><br>
+                            Sharp attenuation of upper Alpha rhythms marks the immediate onset of the ictal event.
+                        </div>
+                        <div class="spec-box">
+                            <strong>Delta Band (&lt;4 Hz)</strong>
+                            <span class="status-increase">SUSTAINED SURGE</span><br>
+                            High-amplitude slow-wave synchronization persists throughout the 40-second seizure window.
+                        </div>
+                        <div class="spec-box">
+                            <strong>Beta Band (13–30 Hz)</strong>
+                            <span class="status-increase">ELEVATED ACTIVITY</span><br>
+                            Broadband power increase spans the entire ictal interval between 49.93 and 50.60 minutes.
+                        </div>
+                        <div class="spec-box">
+                            <strong>Gamma Band (30–50 Hz)</strong>
+                            <span class="status-increase">HIGH-FREQUENCY BURST</span><br>
+                            Pronounced high-frequency synchronization confirms focal cortical hyperexcitability.
+                        </div>
+                    </div>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/eeg_spectrogram/1channel_spectrogram.png" alt="Channel 1 Windowed Spectrogram Around Seizure" onerror="this.src='https://via.placeholder.com/750x400?text=1channel_spectrogram.png';">
+                        <div class="figure-caption">Figure 6b: Channel 1 spectrogram windowed around the seizure event (red horizontal markers), with vertical dividers delineating Delta, Theta, Alpha, Beta, and Gamma bands.</div>
+                    </div>
+                </section>
+
+                <!-- 5. Multi-Channel Spatial Localization -->
+                <section class="detail-section">
+                    <h2>5. Multi-Channel Spatial Localization</h2>
+                    <p>
+                        Comparing time-frequency spectrograms across five cortical regions enabled spatial localization of the seizure's irritative zone:
+                    </p>
+                    <ul>
+                        <li><strong>Right Frontal Focus (Channels 13 &amp; 10):</strong> Exhibited the strongest Beta and Gamma band power surges during the seizure window, localizing primary ictal onset to the anterior right hemisphere (FP2–F8 and F4–C4).</li>
+                        <li><strong>Left Frontal Involvement (Channel 1):</strong> Demonstrated moderate secondary power elevation in Beta/Gamma bands (FP1–F7), indicating cross-hemispheric propagation.</li>
+                        <li><strong>Posterior Sparing (Channels 4 &amp; 18):</strong> Parietal and occipital derivations (P7–O1 and CZ–PZ) showed minimal high-frequency power shifts, confirming a focal frontal seizure rather than generalized cortical involvement.</li>
+                    </ul>
+
+                    <div class="figure-box tall">
+                        <img src="../assets/images/eeg_spectrogram/5channel_spectrograms.png" alt="5-Channel Spatial Spectrogram Comparison" onerror="this.src='https://via.placeholder.com/750x580?text=5channel_spectrograms.png';">
+                        <div class="figure-caption">Figure 7: Multi-channel spectrogram comparison across Frontal Left (Ch 1), Frontal Right (Ch 13), Right Frontal-Central (Ch 10), Left Parietal-Occipital (Ch 4), and Central-Parietal (Ch 18) derivations.</div>
+                    </div>
+                </section>
+
+                <!-- 6. Future Improvements & Clinical Utility -->
+                <section class="detail-section">
+                    <h2>6. Future Improvements &amp; Clinical Utility</h2>
+                    <ul>
+                        <li><strong>Adaptive Windowing:</strong> Implement shorter STFT windows or continuous wavelet transforms (CWT) to sharpen transient onset resolution and track sub-second seizure propagation across electrodes.</li>
+                        <li><strong>Full-Montage Visualization:</strong> Develop a unified 23-channel topographic spectrogram dashboard to assist neurologists in rapidly distinguishing focal versus generalized seizure dynamics.</li>
+                        <li><strong>Automated Seizure Detection:</strong> Extract band-power ratios (Gamma/Alpha and Delta/Alpha) as real-time features for automated clinical event flagging.</li>
+                    </ul>
                 </section>
 
                 <!-- Bottom Exit Navigation -->
