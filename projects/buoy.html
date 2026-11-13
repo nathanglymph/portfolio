@@ -148,9 +148,9 @@
                         <strong>Design Constraints:</strong> 
                     </p>
                     <ul>
-                        <li><strong>Mass Budget:</strong> Total mass strictly maintained under $1.0\text{ kg}$ (achieved $\approx 0.75\text{ kg}$).</li>
-                        <li><strong>Buoyancy &amp; Surface Stability:</strong> Designed to displace slightly less than $1\text{ L}$ of seawater ($\rho \approx 1025\text{ kg/m}^3$) to float stably on the ocean surface.</li>
-                        <li><strong>Electrical Target:</strong> Deliver a regulated output of $5\text{ V}$ DC at $1\text{ A}$ ($5\text{ W}$) via a standard USB-C phone charger.</li>
+                        <li><strong>Mass Budget:</strong> Total mass under 1.0 kg (achieved approx 0.75 kg).</li>
+                        <li><strong>Buoyancy &amp; Surface Stability:</strong> Designed to displace slightly less than 1 L of seawater (density ~1025 kg/m&sup3) to float stably on the ocean surface.</li>
+                        <li><strong>Electrical Target:</strong> Deliver a regulated output of 5 V DC at 1 A (5 W) via a standard USB-C phone charger.</li>
                     </ul>
                 </section>
 
@@ -178,7 +178,7 @@
                     </p>
                     <ul>
                         <li><strong>Buoy Shell:</strong> Modeled a low-density polyethylene (LDPE) two-part housing consisting of an elliptical upper section for ideal surface buoyancy and a cylindrical lower section to house the generator tube and lower the center of gravity to prevent tipping.</li>
-                        <li><strong>Generator Core:</strong> Integrated a cylindrical N52 NdFeB permanent magnet ($1.48\text{ T}$ remanence), a guide cylinder supporting three 100-turn 22 AWG copper coils, and an upper excitation spring.</li>
+                        <li><strong>Generator Core:</strong> Integrated a cylindrical N52 NdFeB permanent magnet (1.48 T remanence), a guide cylinder supporting three 100-turn 22 AWG copper coils, and an upper excitation spring.</li>
                         <li><strong>Electronics Enclosure:</strong> Designed a sealed top electronics compartment featuring integrated PCB mounting bosses and a charging port.</li>
                     </ul>
 
@@ -208,13 +208,13 @@
                             <div>
                                 <img src="../assets/images/buoy/induced_voltage.png" alt="Induced Voltage vs Time" onerror="this.src='https://via.placeholder.com/360x220?text=induced_voltage.png';">
                                 <h4>Faraday's Law Voltage Induction</h4>
-                                <p>Coupled magnet velocity with magnetic flux density gradients ($\frac{dB}{dz}$) to compute instantaneous induced voltage across coil windings.</p>
+                                <p>Coupled magnet velocity with magnetic flux density gradients to compute instantaneous induced voltage across coil windings.</p>
                             </div>
                         </div>
                     </div>
 
                     <p style="margin-top: 15px;">
-                        Using MATLAB's <code>ode15s</code> solver, buoy heave ($z_b$) and relative magnet displacement ($\delta z$) were simulated under coupled equations of motion incorporating water displacement volume, damping coefficients, and an optimized spring constant of $k = 473\text{ N/m}$.
+                        Using MATLAB's <code>ode15s</code> solver, buoy heave and relative magnet displacement were simulated under coupled equations of motion incorporating water displacement volume, damping coefficients, and an optimized spring constant of k = 473 N/m.
                     </p>
                 </section>
 
@@ -225,9 +225,9 @@
                         Because ocean waves produce variable alternating current (AC), a custom PCB was designed to condition the raw signal into a regulated DC output suitable for smartphone charging.
                     </p>
                     <ul>
-                        <li><strong>Full-Bridge Rectifiers:</strong> Utilizes three full-bridge rectifier circuits (employing low $V_f$ Microsemi UPS115UE3 Schottky diodes) to convert AC input to DC output.</li>
-                        <li><strong>OR-ing Diodes &amp; Filtering:</strong> Incorporates safety OR-ing diodes to prevent reverse current feedback between coils, paired with a $150\,\mu\text{F}$ smoothing capacitor to minimize ripple.</li>
-                        <li><strong>USB-C Integration:</strong> Layout terminates into a USB-C port interface for standard consumer smartphone connectivity.</li>
+                        <li><strong>Full-Bridge Rectifiers:</strong> Utilizes three full-bridge rectifier circuits (employing low Vf Schottky diodes) to convert AC input to DC output.</li>
+                        <li><strong>OR-ing Diodes &amp; Filtering:</strong> Incorporates safety OR-ing diodes to prevent reverse current feedback between coils along with a smoothing capacitor to minimize ripple.</li>
+                        <li><strong>USB-C Integration:</strong> Output feeds into a USB-C port interface for standard consumer smartphone connectivity.</li>
                     </ul>
 
                     <div class="figure-box">
@@ -252,10 +252,10 @@
                         The optimized electromechanical system successfully met all core project goals:
                     </p>
                     <ul>
-                        <li><strong>Peak Voltage:</strong> $5.45\text{ V}$[cite: 49]</li>
-                        <li><strong>Peak Current:</strong> $9.23\text{ A}$ (transient peak)</li>
-                        <li><strong>Sustained Power Output:</strong> $6.34\text{ W}$ (surpassing the $5\text{ W}$ smartphone charging target)</li>
-                        <li><strong>Total Mass:</strong> $0.75\text{ kg}$ (comfortably under the $1.0\text{ kg}$ ceiling)</li>
+                        <li><strong>Peak Voltage:</strong> 5.45 V</li>
+                        <li><strong>Peak Current:</strong> 9.23 A</li>
+                        <li><strong>Sustained Power Output:</strong> 6.34 W (surpassing the 5 W target)</li>
+                        <li><strong>Total Mass:</strong> 0.75 kg (comfortably under the 1.0 kg ceiling)</li>
                     </ul>
                 </section>
 
@@ -263,7 +263,7 @@
                 <section class="detail-section">
                     <h2>7. Future Improvements</h2>
                     <ul>
-                        <li><strong>Coil Density Optimization:</strong> Expand the number of stator coils to increase cumulative flux linkage without exceeding the $1\text{ kg}$ total weight threshold.</li>
+                        <li><strong>Coil Density Optimization:</strong> Expand the number of stator coils to increase cumulative flux linkage without exceeding the 1.0 kg total weight threshold.</li>
                         <li><strong>Loss Reduction:</strong> Explore thicker wire gauges or alternative winding geometries to minimize resistive losses in windings.</li>
                         <li><strong>Energy Storage Integration:</strong> Incorporate a trickle-charged lithium-polymer (Li-Po) buffer battery or supercapacitor bank to deliver steady, uninterrupted power during calm wave troughs.</li>
                     </ul>
