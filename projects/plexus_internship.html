@@ -3,31 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plexus Internship Projects</title>
+    <title>Plexus Internship Projects | Process Engineering</title>
     <link rel="stylesheet" href="../styles.css">
-    <style>
-        .detail-header {
-            border-bottom: 1px dashed var(--parchment-border);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-        }
-        .detail-section {
-            margin-bottom: 30px;
-        }
-        .detail-section h2 {
-            font-size: 1.25rem;
-            color: var(--copper-accent);
-            border-bottom: 1px solid var(--parchment-border);
-            padding-bottom: 6px;
-            margin-bottom: 12px;
-        }
-        .wip-notice {
-            font-family: var(--font-title);
-            color: var(--ink-muted);
-            font-style: italic;
-            padding: 20px 0;
-        }
-    </style>
 </head>
 <body>
 
@@ -41,7 +18,7 @@
             <article class="parchment-sheet">
                 <header class="detail-header">
                     <span class="catalog-num">REF-002</span>
-                    <h1>Plexus Internship Projects</h1>
+                    <h1>Plexus Process Engineering Internship</h1>
                     <div class="tag-row">
                         <span class="tag">STATISTICAL ANALYSIS</span>
                         <span class="tag">MANUFACTURING</span>
@@ -50,10 +27,102 @@
                     </div>
                 </header>
 
-                <!-- Project Body / WIP Content -->
+                <!-- 1. SPI Optimization Application -->
                 <section class="detail-section">
-                    <h2>1. Overview & Objectives</h2>
-                    <p class="wip-notice">[ Work In Progress - Full project documentation coming soon. ]</p>
+                    <h2>1. SPI Optimization &amp; Data Analytics Application</h2>
+                    <p>
+                        <strong>Process Background:</strong> Surface Mount Technology (SMT) assembly relies on three core stages: paste printing, component placement, and reflow soldering. A Solder Paste Inspector (SPI) is used right after printing to measure paste volume, height, and area before components are placed.
+                    </p>
+                    <p>
+                        <strong>The Engineering Problem:</strong> Standard SPI error flags are frequently uninformative because inspection tolerances are often imprecise, leading to unnecessary production line stoppages or undetected flaws.
+                    </p>
+                    <p>
+                        <strong>Data-Driven Solution:</strong> Developed an interactive SPI Optimization Application built with Google Apps Script and Gemini AI to correlate raw measurements directly with actual defect results. The tool ingests work order (WO) SPI and defect records, calculates optimal parameters to minimize Type I errors (false calls) and Type II errors (escapes), and builds a robust historical defect database filterable by individual packages or assembly-wide profiles.
+                    </p>
+
+                    <div class="figure-box">
+                        <img src="../assets/images/plexus/smt_process.png" alt="SMT Process Flow" onerror="this.src='https://via.placeholder.com/750x220?text=smt_process.png';">
+                        <div class="figure-caption">Surface Mount Component Process: Stencil Printing &rarr; Paste Deposit Inspection &rarr; Solder Joint Reflow.</div>
+                    </div>
+
+                    <div class="plot-grid-2col" style="margin-top: 20px;">
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/spi.png" alt="SPI Deposit Measurement" onerror="this.src='https://via.placeholder.com/360x220?text=spi.png';">
+                                <h4>Solder Paste Inspection (SPI)</h4>
+                                <p>Laser-based optical measurement of paste volume, area, and offset dimensions immediately following printing.</p>
+                            </div>
+                        </div>
+
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/website.png" alt="SPI Optimization Dashboard UI" onerror="this.src='https://via.placeholder.com/360x220?text=website.png';">
+                                <h4>Optimization Dashboard UI</h4>
+                                <p>Custom web application interface displaying assembly-wide inspection profiles, tolerance targets, and predicted defect line impact.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 20px;">
+                        <strong>Quantified Impact (Sample of 470,000 components):</strong>
+                    </p>
+                    <ul>
+                        <li><strong>71.65% reduction</strong> in false calls using assembly-wide optimized settings.</li>
+                        <li><strong>87% reduction</strong> in defect escapes using package-specific parameters.</li>
+                    </ul>
+                </section>
+
+                <!-- 2. Custom Manufacturing Tooling Projects -->
+                <section class="detail-section">
+                    <h2>2. Custom Manufacturing Tooling</h2>
+                    <p>
+                        Used SolidWorks to design and fabricate a variety of specialized assembly tools aimed at minimizing product variation, enhancing output efficiency, and mitigating operator safety risks.
+                    </p>
+
+                    <!-- 2x2 Collage Grid for Tooling -->
+                    <div class="plot-grid-2col" style="margin-top: 15px;">
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/iv_tooling.png" alt="IV Fixture Tooling" onerror="this.src='https://via.placeholder.com/360x220?text=iv_tooling.png';">
+                                <h4>IV Cap Assembly Tool</h4>
+                                <p>Housing to assist in assembly of the top of an IV stand and poka yoke orientation.</p>
+                            </div>
+                        </div>
+
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/pin_tooling.png" alt="Pin Press-Fit Tooling" onerror="this.src='https://via.placeholder.com/360x220?text=pin_tooling.png';">
+                                <h4>Guide Pin &amp; Removal Tool</h4>
+                                <p>Small pins used to align an acrylic viewport on a vacuum pump before gluing, and a removal tool to pull them out afterward.</p>
+                            </div>
+                        </div>
+
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/syringe_tooling.png" alt="Syringe Dispensing Fixture" onerror="this.src='https://via.placeholder.com/360x220?text=syringe_tooling.png';">
+                                <h4>Syringe Alignment Fixture</h4>
+                                <p>3-piece fixture used to align the tip of a syringe to the center of tubing on an infusion pump for testing.</p>
+                            </div>
+                        </div>
+
+                        <div class="plot-card">
+                            <div>
+                                <img src="../assets/images/plexus/valve_tooling.png" alt="Valve Actuation Tooling" onerror="this.src='https://via.placeholder.com/360x220?text=valve_tooling.png';">
+                                <h4>Valve Rotation Bit</h4>
+                                <p>Custom bit to allow rotation of a pneumatic valve as required by assembly. Custom handle for rotation, also compatible with with standard 1/2" wrenches.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Engineering Takeaways -->
+                <section class="detail-section">
+                    <h2>3. Engineering Key Takeaways</h2>
+                    <ul>
+                        <li><strong>Prioritizing High-Impact Actions:</strong> Focusing efforts where process variation is highest, given the countless potential paths toward manufacturing improvements.</li>
+                        <li><strong>Design Balance:</strong> Striking an optimal balance between manufacturability, operator usability, and long-term effectiveness.</li>
+                        <li><strong>Cross-Functional Execution:</strong> Leveraging clear communication and structured organization to keep multi-disciplinary teams aligned on project goals.</li>
+                    </ul>
                 </section>
 
                 <!-- Bottom Exit Navigation -->
